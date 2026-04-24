@@ -19,3 +19,8 @@
 | **50%** | 29.000000 | 4.700000 | 26.000000 |
 | **75%** | 34.000000 | 4.800000 | 32.000000 |
 | **max** | 50.000000 | 6.000000 | 54.000000 |
+
+<img width="800" height="500" alt="imagen1" src="https://github.com/user-attachments/assets/274545d3-0948-4345-9e9a-727f1c1f1251" />
+
+<img width="800" height="500" alt="imagen2" src="https://github.com/user-attachments/assets/e75eb0ca-2fb8-4ab8-8cba-611900824d76" />
+
