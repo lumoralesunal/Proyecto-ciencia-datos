@@ -26,4 +26,11 @@
 
 <img width="800" height="500" alt="imagen3" src="https://github.com/user-attachments/assets/f583f0cc-8c4b-41ca-9eb9-6ea182daa1d9" />
 
+## 3. Instrucciones de ejecución
+Para ejecutar la primera entrega:
 
+1. Descarga los archivos de este repositorio.
+2. Asegúrate de que los archivos `index.html` y `app.js` estén en la misma carpeta.
+3. Haz doble clic sobre el archivo `index.html`.
+4. El sistema se abrirá automáticamente en tu navegador web.
+5. Llena el formulario y haz clic en "Calcular Tiempo Estimado" el cual solo dice x minutos por ahora.
