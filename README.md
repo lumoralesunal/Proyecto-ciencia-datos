@@ -46,14 +46,17 @@ Para esta entrega, se ha desarrollado la infraestructura del backend y la lógic
 ### 📊 Arquitectura y Flujo de Datos
 A continuación se detalla cómo viaja la información desde que el usuario hace clic hasta que recibe el resultado:
 
-```mermaid
-graph LR
-    A[index.html <br/> Formulario] -->|1. Envia JSON| B(app.js <br/> Fetch API)
-    B -->|2. Petición POST| C{app.py <br/> Flask API}
-    C -->|3. Preprocesamiento| D[Conversión <br/> Texto a Números]
-    D -->|4. Lógica| E[Cálculo de <br/> Tiempo]
-    E -->|5. Respuesta JSON| B
-    B -->|6. Renderiza| F[Pantalla <br/> Resultado]
+1. FRONTEND (Cliente)          2. CONEXIÓN (API)          3. BACKEND (Servidor)
++-----------------------+      +------------------+      +-------------------------+
+|  Formulario HTML      | ===> |   Petición POST  | ===> |  Flask (app.py)         |
+|  (Datos de usuario)   |      |   (JSON Data)    |      |  - Recibe JSON          |
++-----------------------+      +------------------+      |  - PREPROCESAMIENTO     |
+           ^                                             |  - Cálculo de Tiempo    |
+           |                                             +-------------------------+
+           |                   +------------------+                   |
+           +------------------ |  Respuesta JSON  | <-----------------+
+                               |  (Resultado)     |
+                               +------------------+
 
 
 **Instrucciones para probar el sistema:**
