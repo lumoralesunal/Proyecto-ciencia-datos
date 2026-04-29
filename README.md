@@ -45,5 +45,5 @@ Para esta entrega, se ha desarrollado la infraestructura del backend y la lógic
 
 **Instrucciones para probar el sistema:**
 1. Instalar las librerías necesarias: `pip install flask flask-cors`
-2. Ejecutar el backend: `python app.py`
+2. Ejecutar el backend: `python app.py` en el terminal al descargar el archivo, para asi lograr que sirva el codigo
 3. Con el servidor activo, abrir el `index.html`, ingresar los datos y observar la respuesta generada por la API.
