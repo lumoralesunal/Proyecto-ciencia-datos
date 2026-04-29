@@ -43,22 +43,6 @@ Para esta entrega, se ha desarrollado la infraestructura del backend y la lógic
 2. **Preprocesamiento de datos:** El backend incluye una lógica de transformación donde las variables de texto (Clima, Tráfico, Vehículo) se convierten en valores numéricos ponderados. Esto simula el proceso de limpieza necesario para modelos de Machine Learning.
 3. **Integración:** Se conectó el Frontend con el Backend mediante la Fetch API, permitiendo una comunicación en tiempo real.
 
-### 📊 Arquitectura y Flujo de Datos
-A continuación se detalla cómo viaja la información desde que el usuario hace clic hasta que recibe el resultado:
-
-1. FRONTEND (Cliente)          2. CONEXIÓN (API)          3. BACKEND (Servidor)
-+-----------------------+      +------------------+      +-------------------------+
-|  Formulario HTML      | ===> |   Petición POST  | ===> |  Flask (app.py)         |
-|  (Datos de usuario)   |      |   (JSON Data)    |      |  - Recibe JSON          |
-+-----------------------+      +------------------+      |  - PREPROCESAMIENTO     |
-           ^                                             |  - Cálculo de Tiempo    |
-           |                                             +-------------------------+
-           |                   +------------------+                   |
-           +------------------ |  Respuesta JSON  | <-----------------+
-                               |  (Resultado)     |
-                               +------------------+
-
-
 **Instrucciones para probar el sistema:**
 1. Instalar las librerías necesarias: `pip install flask flask-cors`
 2. Ejecutar el backend: `python app.py`
