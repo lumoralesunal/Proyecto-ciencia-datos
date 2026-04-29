@@ -12,9 +12,7 @@ function simular_prediccion() {
         return; 
     }
 
-    var url_api= "http://127.0.0.1:5000/predict";
-
-    fetch(url_api, {
+    fetch("http://127.0.0.1:5000/predict", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
