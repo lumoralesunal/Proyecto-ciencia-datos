@@ -34,3 +34,16 @@ Para ejecutar la primera entrega:
 3. Haz doble clic sobre el archivo `index.html`.
 4. El sistema se abrirá automáticamente en tu navegador web.
 5. Llena el formulario y haz clic en "Calcular Tiempo Estimado" el cual solo dice x minutos por ahora.
+
+## 4. Entrega 2: Backend, API y Preprocesamiento
+Para esta entrega, se ha desarrollado la infraestructura del backend y la lógica de procesamiento de datos.
+
+**¿Qué se implementó?**
+1. **API con Flask:** Se creó un endpoint `/predict` que procesa peticiones POST enviadas desde el formulario.
+2. **Preprocesamiento de datos:** El backend incluye una lógica de transformación donde las variables de texto (Clima, Tráfico, Vehículo) se convierten en valores numéricos ponderados. Esto simula el proceso de limpieza necesario para modelos de Machine Learning.
+3. **Integración:** Se conectó el Frontend con el Backend mediante la Fetch API, permitiendo una comunicación en tiempo real.
+
+**Instrucciones para probar el sistema:**
+1. Instalar las librerías necesarias: `pip install flask flask-cors`
+2. Ejecutar el backend: `python app.py`
+3. Con el servidor activo, abrir el `index.html`, ingresar los datos y observar la respuesta generada por la API.
