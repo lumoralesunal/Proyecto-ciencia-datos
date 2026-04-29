@@ -12,12 +12,30 @@ function simular_prediccion() {
         return; 
     }
 
-   
-    var caja = document.getElementById("caja_resultado");
-    var texto = document.getElementById("texto_resultado");
+    var url_api= "http://127.0.0.1:5000/predict";
 
-   
+    fetch(url_api, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            edad: parseFloat(edad),
+            calificacion: parseFloat(calificacion),
+            clima: clima,
+            trafico: trafico,
+            vehiculo: vehiculo
+        })
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        // 3. Mostrar el resultado devuelto por Python
+        var caja = document.getElementById("caja_resultado");
+        var texto = document.getElementById("texto_resultado");
+      
     caja.style.display = "block";
-
     texto.innerHTML = "Tiempo estimado: x minutos.";
+})
 }
