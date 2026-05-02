@@ -20,8 +20,7 @@ function simular_prediccion() {
         body: JSON.stringify({
             edad: parseFloat(edad),
             calificacion: parseFloat(calificacion),
-            clima: clima,
-            trafico: trafico,
+            orden: orden,
             vehiculo: vehiculo
         })
     })
@@ -29,7 +28,7 @@ function simular_prediccion() {
         return response.json();
     })
     .then(function(data) {
-        // 3. Mostrar el resultado devuelto por Python
+        
         var caja = document.getElementById("caja_resultado");
         var texto = document.getElementById("texto_resultado");
       
