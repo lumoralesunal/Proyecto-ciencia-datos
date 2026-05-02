@@ -14,15 +14,13 @@ def predecir_tiempo():
         trafico = datos.get('trafico', '')
         vehiculo = datos.get('vehiculo', '')
 
-        dic_clima = {"Sunny": 1, "Cloudy": 2, "Fog": 3, "Rainy": 4}
-        dic_trafico = {"Low": 1, "Medium": 2, "High": 3, "Jam": 4}
+        dic_orden = { "Snack": 5,"Drinks": 3,"Buffet": 15,"Meal": 10}
         dic_vehiculo = {"motorcycle": 1, "scooter": 2, "electric_scooter": 2, "bycicle": 3}
 
-        clima_n = dic_clima.get(clima, 1)
-        trafico_n = dic_trafico.get(trafico, 1)
+        tiempo_preparacion = dic_orden.get(orden, 5)
         vehiculo_n = dic_vehiculo.get(vehiculo, 1)
 
-        tiempo = 15 + (trafico_n * 6) + (clima_n * 3) + (vehiculo_n * 2) - (calificacion * 1.5)
+        tiempo = 10 + tiempo_preparacion + (vehiculo_n * 4) - (calificacion * 1.2)
         
         return jsonify({"status": "success", "tiempo_predicho": round(tiempo, 1)})
     except Exception as e:
