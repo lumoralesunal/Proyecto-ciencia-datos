@@ -1,30 +1,48 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import math
 
 app = Flask(__name__)
 CORS(app)
 
+def calcular_distancia(lat1, lon1, lat2, lon2):
+    R = 6371.0
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distancia = R * c
+    return round(distancia, 2)
+
 @app.route('/predict', methods=['POST'])
 def predecir_tiempo():
-    try:
-        datos = request.get_json()
-        edad = float(datos.get('edad', 0))
-        calificacion = float(datos.get('calificacion', 0))
-        clima = datos.get('clima', '')
-        trafico = datos.get('trafico', '')
-        vehiculo = datos.get('vehiculo', '')
+    datos = request.get_json()
+    
+    edad = float(datos.get('edad'))
+    calificacion = float(datos.get('calificacion'))
+    rest_lat = float(datos.get('rest_lat'))
+    rest_lon = float(datos.get('rest_lon'))
+    del_lat = float(datos.get('del_lat'))
+    del_lon = float(datos.get('del_lon'))
+    orden = datos.get('orden').strip()
+    vehiculo = datos.get('vehiculo').strip()
+    
+    distancia_km = calcular_distancia(rest_lat, rest_lon, del_lat, del_lon)
+    
+    dic_vehiculo = {
+        "motorcycle": 1, 
+        "scooter": 2, 
+        "electric_scooter": 3, 
+        "bycicle": 4
+    }
+    vehiculo_num = dic_vehiculo.get(vehiculo, 1)
 
-        dic_orden = { "Snack": 5,"Drinks": 3,"Buffet": 15,"Meal": 10}
-        dic_vehiculo = {"motorcycle": 1, "scooter": 2, "electric_scooter": 2, "bycicle": 3}
-
-        tiempo_preparacion = dic_orden.get(orden, 5)
-        vehiculo_n = dic_vehiculo.get(vehiculo, 1)
-
-        tiempo = 10 + tiempo_preparacion + (vehiculo_n * 4) - (calificacion * 1.2)
-        
-        return jsonify({"status": "success", "tiempo_predicho": round(tiempo, 1)})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 400
+    tiempo = 10 + (distancia_km * 3) + (edad * 0.5) - (calificacion * 2) + vehiculo_num
+    
+    return jsonify({
+        "distancia_km": distancia_km,
+        "tiempo_predicho": round(tiempo, 1)
+    })
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
